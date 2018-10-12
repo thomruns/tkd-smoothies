@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="home">
     <h1>{{ msg }}</h1>
     <p>This project uses {{ useCss }} for styling.</p>
   </div>

@@ -2,6 +2,7 @@
 
 > A Vue project using webpack.
 > This project uses Materialize for basic styling, as the focus is on the Vue.js functionality rather than on the CSS.
+We will endeavor in each commit to explain the code modifications contained within the commit. Each commit will build on the previous commits, until the fully functional app is completed.
 
 ## Build Setup
 
