@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="index">
     <h1>{{ msg }}</h1>
     <p>This project uses {{ useCss }} for styling.</p>
   </div>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'Index',
   data () {
     return {
       msg: 'Just placeholder text',
