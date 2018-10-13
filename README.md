@@ -4,6 +4,29 @@
 > This project uses Materialize for basic styling, as the focus is on the Vue.js functionality rather than on the CSS.
 We will endeavor in each commit to explain the code modifications contained within the commit. Each commit will build on the previous commits, until the fully functional app is completed.
 
+## Important project note
+This repo does not contain a critical directory and file, specifically the src/firebase/init.js file which contains code including the Firebase API key necessary to communicate with the backend database.
+The code in bold is added to the code supplied by the Firebase setup process.
+
+**import firebase from 'firebase'**
+**import firestore from 'firebase/firestore'**
+
+// SUPPLIED BY FIREBASE
+var config = {
+  apiKey: "API_KEY_HERE",
+  authDomain: "FROM_FIREBASE_SETUP",
+  databaseURL: "FROM_FIREBASE_SETUP",
+  projectId: "FROM_FIREBASE_SETUP",
+  storageBucket: "FROM_FIREBASE_SETUP",
+  messagingSenderId: "FROM_FIREBASE_SETUP"
+};
+
+**const firebaseApp = firebase.initializeApp(config)**
+**firebaseApp.firestore().settings({ timestampsInSnapshots: true })**
+
+// export firestore database
+**export default firebaseApp.firestore()**
+
 ## Build Setup
 
 ``` bash
