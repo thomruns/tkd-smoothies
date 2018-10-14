@@ -6,7 +6,7 @@ We will endeavor in each commit to explain the code modifications contained with
 
 ## Important project note
 This repo does not contain a critical directory and file, specifically the src/firebase/init.js file which contains code including the Firebase API key necessary to communicate with the backend database.
-The code in bold is added to the code supplied by the Firebase setup process.
+The code designated by **   ** is added to the code supplied by the Firebase setup process.
 
 ```
 **import firebase from 'firebase'**
