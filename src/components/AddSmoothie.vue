@@ -1,7 +1,7 @@
 <template>
   <div class="add-smoothie container">
     <h2 class="center-align green-text text-darken-2">Add new smoothie recipe</h2>
-    <form>
+    <form @submit.prevent="AddSmoothie">
       <div class="field title">
         <label for="title">Smoothie Title</label>
         <input type="text" name="title" v-model="title">
@@ -23,6 +23,11 @@ export default {
   data() {
     return {
       title: null
+    }
+  },
+  methods: {
+    AddSmoothie() {
+      console.log(this.title)
     }
   }
 }
