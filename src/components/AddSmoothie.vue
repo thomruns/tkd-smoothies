@@ -3,8 +3,12 @@
     <h2 class="center-align green-text text-darken-2">Add new smoothie recipe</h2>
     <form @submit.prevent="AddSmoothie">
       <div class="field title">
-        <label for="title">Smoothie Title</label>
+        <label for="title">Smoothie Name</label>
         <input type="text" name="title" v-model="title">
+      </div>
+      <div v-for="(ing, index) in ingredients" :key="index">
+        <label for="ingredient">Ingredients:</label>
+        <input type="text" name="ingredient" v-model="ingredients[index]">
       </div>
       <div class="field add-ingredient">
         <label for="add-ingredient">Add an ingredient, (press Tab key to add another)</label>
@@ -32,6 +36,8 @@ export default {
   methods: {
     AddSmoothie() {
       console.log(this.title, this.ingredients)
+      // var slug = this.title.replace(' ', '-').toLowerCase()
+      // console.log(slug)
       this.title = null
     },
     addIng() {
