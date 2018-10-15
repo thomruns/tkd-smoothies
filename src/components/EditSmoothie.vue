@@ -1,7 +1,7 @@
 <template>
   <div v-if="smoothie" class="edit-smoothie container">
     <h2>Edit {{ smoothie.title }}</h2>
-    <form @submit.prevent="EditSmoothie">
+    <form @submit.prevent="editSmoothie">
       <div class="field title">
         <label for="title">Smoothie Name</label>
         <input type="text" name="title" v-model="smoothie.title">
@@ -46,7 +46,22 @@ export default {
   },
   methods: {
     editSmoothie() {
-      console.log(this.smoothie.title)
+      console.log(this.smoothie.title, this.smoothie.ingredients)
+    },
+    addIng() {
+      if(this.another) {
+        this.smoothie.ingredients.push(this.another)
+        //console.log(this.ingredients)
+        this.another = null
+        this.feedback = null
+      } else {
+        this.feedback = 'Please enter a value to add an ingredient'
+      }
+    },
+    deleteIng(ing) {
+      this.smoothie.ingredients = this.smoothie.ingredients.filter(ingredient => {
+        return ingredient != ing
+      })
     }
   }
 }
