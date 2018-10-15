@@ -6,9 +6,10 @@
         <label for="title">Smoothie Name</label>
         <input type="text" name="title" v-model="title">
       </div>
-      <div v-for="(ing, index) in ingredients" :key="index">
+      <div v-for="(ing, index) in ingredients" :key="index" class="field">
         <label for="ingredient">Ingredients:</label>
         <input type="text" name="ingredient" v-model="ingredients[index]">
+        <i class="material-icons delete" @click="deleteIng(ing)">delete</i>
       </div>
       <div class="field add-ingredient">
         <label for="add-ingredient">Add an ingredient, (press Tab key to add another)</label>
@@ -41,7 +42,7 @@ export default {
     AddSmoothie() {
       if(this.title) {
         this.feedback = null
-        // create slug
+        // create slug using slugify package
         this.slug = slugify(this.title, {
           replacement: '-',
           remove: /[$*_+~.()'"!\-:@]/g,
@@ -50,7 +51,7 @@ export default {
         db.collection('smoothies').add({
           title: this.title,
           ingredients: this.ingredients,
-          slug: this.slug
+          slug: this.slug,
         }).then(() => {
           this.$router.push({ name: "Index" })
         }).catch(err => {
@@ -59,10 +60,7 @@ export default {
       } else {
         this.feedback = "You must enter a smoothie title"
       }
-      //console.log(this.title, this.ingredients)
-      // var slug = this.title.replace(' ', '-').toLowerCase()
-      // console.log(slug)
-      this.title = null
+      this.title = null // delete? unnecessary due to rerouting??
     },
     addIng() {
       if(this.another) {
@@ -73,6 +71,11 @@ export default {
       } else {
         this.feedback = 'Please enter a value to add an ingredient'
       }
+    },
+    deleteIng(ing) {
+      this.ingredients = this.ingredients.filter(ingredient => {
+        return ingredient != ing
+      })
     }
   }
 }
@@ -92,10 +95,19 @@ export default {
 
 .add-smoothie .field {
   margin: 20px auto;
+  position: relative;
 }
 
 .add-smoothie button {
   border-radius: 8px;
+}
+.add-smoothie .delete {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  color: #aaa;
+  font-size: 1.4em;
+  cursor: pointer;
 }
 </style>
 
