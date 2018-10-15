@@ -60,7 +60,6 @@ export default {
       } else {
         this.feedback = "You must enter a smoothie title"
       }
-      this.title = null // delete? unnecessary due to rerouting??
     },
     addIng() {
       if(this.another) {
